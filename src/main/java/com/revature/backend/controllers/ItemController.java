@@ -48,4 +48,38 @@ public class ItemController {
 
         return ResponseEntity.ok(new JsonResponse("item created", item));
     }
+
+    @PatchMapping("{itemId}")
+    public ResponseEntity<JsonResponse> markItemInCart(@PathVariable Integer itemId){
+        Item item = this.itemService.markItemInCart(itemId);
+
+        if(item == null)
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(new JsonResponse("item with id " + itemId + " does not exist", null));
+
+        return ResponseEntity.ok(new JsonResponse("item id " + itemId + " is in cart", item));
+    }
+
+    @DeleteMapping("{itemId}")
+    public ResponseEntity<JsonResponse> deleteItemFromList(@PathVariable Integer accountId, @PathVariable Integer itemId){
+        Boolean isSuccessful = this.itemService.removeItemFromList(accountId, itemId);
+
+        if(!isSuccessful)
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(new JsonResponse("you do not have an item with id " + itemId, null));
+
+        return ResponseEntity.ok(new JsonResponse("item with id " + itemId + " has been deleted", null));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<JsonResponse> deleteAllItemsInCart(@PathVariable Integer accountId){
+        this.itemService.removeItemsInCart(accountId);
+
+        return ResponseEntity.ok(new JsonResponse("all items that are in cart have been removed from list for account id " + accountId,null));
+    }
+
+
+
 }

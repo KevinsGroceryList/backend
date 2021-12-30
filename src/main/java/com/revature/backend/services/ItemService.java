@@ -7,9 +7,11 @@ import com.revature.backend.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class ItemService {
 
     private ItemRepo itemRepo;
@@ -72,7 +74,7 @@ public class ItemService {
     }
 
     public void removeItemsInCart(Integer accountId){
-        this.itemRepo.deleteAllByAccountIdAndInCart(accountId, true);
+        this.itemRepo.deleteByAccountIdAndInCart(accountId, true);
     }
 
 

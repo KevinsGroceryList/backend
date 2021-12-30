@@ -12,5 +12,5 @@ public interface ItemRepo extends JpaRepository<Item, Integer> {
 
     List<Item> findAllByAccountId(Integer accountId);
 
-    void deleteAllByAccountIdAndInCart(Integer accountId, Boolean inCart);
+    void deleteByAccountIdAndInCart(Integer accountId,Boolean inCart);
 }
