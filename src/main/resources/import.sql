@@ -1,0 +1,1 @@
+INSERT INTO accounts (username, password, firstname, lastname) VALUES ('automatedUsername', 'pass123', 'automatedFirstname', 'automatedLastname');

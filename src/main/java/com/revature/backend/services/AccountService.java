@@ -27,7 +27,7 @@ public class AccountService {
     }
 
     public Account createAccount(Account credentials){
-        Account account = this.getAccountByUsername(credentials.getUsername());
+        Account account = this.accountRepo.findByUsername(credentials.getUsername());
 
         //if account is NOT equal to null, then an account with the username provided already exists
         if(account != null)
@@ -38,7 +38,7 @@ public class AccountService {
 
     public Account validateAccountCredentials(Account credentials){
         //check if username is in the system
-        Account account = this.getAccountByUsername(credentials.getUsername());
+        Account account = this.accountRepo.findByUsername(credentials.getUsername());
 
         //invalid credentials if username is not found
         if(account == null)
