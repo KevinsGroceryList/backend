@@ -3,13 +3,10 @@ package com.revature.backend.controllers;
 import com.revature.backend.models.Account;
 import com.revature.backend.models.JsonResponse;
 import com.revature.backend.services.AccountService;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import javax.xml.ws.Response;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +23,7 @@ class AccountControllerTest {
     @Test
     void registerAccountValidCredentials() {
         //arrange
+        //sonar cloud test
         Account credentials = new Account();
         credentials.setUsername("kchi123");
         credentials.setPassword("pass123");

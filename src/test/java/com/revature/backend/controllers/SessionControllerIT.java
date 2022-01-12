@@ -39,9 +39,9 @@ class SessionControllerIT {
         Mockito.when(this.accountService.validateAccountCredentials(credentials)).thenReturn(account);
 
         mvc.perform(MockMvcRequestBuilders.post("/session")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(credentials))
-                .session(session))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new ObjectMapper().writeValueAsString(credentials))
+                        .session(session))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(expectedResult)));
 

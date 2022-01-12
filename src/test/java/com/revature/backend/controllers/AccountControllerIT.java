@@ -1,7 +1,5 @@
 package com.revature.backend.controllers;
 
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.backend.models.Account;
 import com.revature.backend.models.JsonResponse;
@@ -66,6 +64,8 @@ public class AccountControllerIT {
         JsonResponse expectedResult = new JsonResponse("username is already taken", null);
         Mockito.when(this.accountService.createAccount(credentials)).thenReturn(null);
 
+        //act
+        //assert
         mvc.perform(MockMvcRequestBuilders.post("/account")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(credentials)))
