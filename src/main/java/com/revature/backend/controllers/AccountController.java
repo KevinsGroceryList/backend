@@ -16,6 +16,8 @@ public class AccountController {
 
     private AccountService accountService;
 
+    String password = "p4ssw0rd";
+
     @Autowired
     public AccountController(AccountService accountService){
         this.accountService = accountService;
